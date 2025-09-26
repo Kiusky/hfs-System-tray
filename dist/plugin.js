@@ -11,17 +11,19 @@ exports.init = api => {
     const exePath = path.join(__dirname, 'RBTray.exe')
 
     execFile(exePath, { cwd: path.dirname(exePath) }, err => {
-        if (err) api.log("Erro ao executar RBTray: " + err.message)
-        else api.log("RBTray iniciado com sucesso.")
+        if (err) api.log("Error running RBTray: " + err.message)
+        else api.log("RBTray started successfully.")
     })
 
     api.events.on('dispose', () => {
-        exec('taskkill /IM RBTray.exe /F', (err, stdout, stderr) => {
-            if (err) {
-                api.log("Erro ao finalizar RBTray: " + err.message)
-            } else {
-                api.log("RBTray encerrado com sucesso.")
-            }
+        exec('taskkill /IM RBTray.exe /F', (err) => {
+            if (err) api.log("Error finalizing RBTray:" + err.message)
+            else api.log("RBTray terminated successfully.")
+        })
+
+        exec('taskkill /IM RBHook.exe /F', (err) => {
+            if (err) api.log("Error finalizing RBHook:" + err.message)
+            else api.log("RBHook closed successfully.")
         })
     })
 }
