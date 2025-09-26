@@ -14,16 +14,4 @@ exports.init = api => {
         if (err) api.log("Error running RBTray: " + err.message)
         else api.log("RBTray started successfully.")
     })
-
-    api.events.on('dispose', () => {
-        exec('taskkill /IM RBTray.exe /F', (err) => {
-            if (err) api.log("Error finalizing RBTray:" + err.message)
-            else api.log("RBTray terminated successfully.")
-        })
-
-        exec('taskkill /IM RBHook.exe /F', (err) => {
-            if (err) api.log("Error finalizing RBHook:" + err.message)
-            else api.log("RBHook closed successfully.")
-        })
-    })
 }
