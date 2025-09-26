@@ -1,6 +1,6 @@
 exports.repo = "Kiusky/hfs-System-tray"
 exports.version = 0.5
-exports.description = "Minimize hfs to system tray with RBtray"
+exports.description = "Minimize hfs terminal to wundows system tray with RBtray"
 exports.apiRequired = 12.3
 exports.preview = ["https://github.com/user-attachments/assets/dcb5ae61-0e0d-4535-ae64-5116a0ffeb11"]
 
